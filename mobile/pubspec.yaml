@@ -26,7 +26,7 @@ dependencies:
   auto_route: ^9.2.0
   fluttertoast: ^8.2.4
   socket_io_client: ^2.0.3+1
-  maplibre_gl: 0.20.0
+  maplibre_gl: 0.19.0+2
   geolocator: ^11.0.0 # used to move to current location in map view
   flutter_udid: ^3.0.0
   flutter_svg: ^2.0.9
@@ -54,7 +54,7 @@ dependencies:
   device_info_plus: ^11.0.0
   connectivity_plus: ^6.0.0
   wakelock_plus: ^1.1.4
-  flutter_local_notifications: ^17.2.1+2
+  flutter_local_notifications: ^18.0.1
   timezone: ^0.10.0
   octo_image: ^2.0.0
   thumbhash: 0.1.0+1
