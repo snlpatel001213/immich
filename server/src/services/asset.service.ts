@@ -188,7 +188,7 @@ export class AssetService extends BaseService {
           name: JobName.ASSET_DELETION,
           data: {
             id: asset.id,
-            deleteOnDisk: true,
+            deleteOnDisk: !asset.isOffline,
           },
         })),
       );
@@ -250,17 +250,7 @@ export class AssetService extends BaseService {
     const { thumbnailFile, previewFile } = getAssetFiles(asset.files);
     const files = [thumbnailFile?.path, previewFile?.path, asset.encodedVideoPath];
 
-    let willDelete = deleteOnDisk;
-
-    if (asset.isOffline) {
-      /* We don't want to delete an offline asset because it is either...
-           ...missing from disk => don't delete the file since it doesn't exist where we expect
-           ...outside of any import path => don't delete the file since we're not responsible for it
-           ...matching an exclusion pattern => don't delete the file since we're not responsible for it */
-      willDelete = false;
-    }
-
-    if (willDelete) {
+    if (deleteOnDisk) {
       files.push(asset.sidecarPath, asset.originalPath);
     }
 
