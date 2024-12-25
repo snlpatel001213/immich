@@ -7,14 +7,14 @@
 # See https://immich.app/docs/features/ml-hardware-acceleration for info on usage.
 
 services:
-  armnn:
-    devices:
-      - /dev/mali0:/dev/mali0
-    volumes:
-      - /lib/firmware/mali_csffw.bin:/lib/firmware/mali_csffw.bin:ro # Mali firmware for your chipset (not always required depending on the driver)
-      - /usr/lib/libmali.so:/usr/lib/libmali.so:ro # Mali driver for your chipset (always required)
+  # armnn:
+  #   devices:
+  #     - /dev/mali0:/dev/mali0
+  #   volumes:
+  #     - /lib/firmware/mali_csffw.bin:/lib/firmware/mali_csffw.bin:ro # Mali firmware for your chipset (not always required depending on the driver)
+  #     - /usr/lib/libmali.so:/usr/lib/libmali.so:ro # Mali driver for your chipset (always required)
 
-  cpu: {}
+  # cpu: {}
 
   cuda:
     deploy:
@@ -26,18 +26,18 @@ services:
               capabilities:
                 - gpu
 
-  openvino:
-    device_cgroup_rules:
-      - 'c 189:* rmw'
-    devices:
-      - /dev/dri:/dev/dri
-    volumes:
-      - /dev/bus/usb:/dev/bus/usb
+  # openvino:
+  #   device_cgroup_rules:
+  #     - 'c 189:* rmw'
+  #   devices:
+  #     - /dev/dri:/dev/dri
+  #   volumes:
+  #     - /dev/bus/usb:/dev/bus/usb
 
-  openvino-wsl:
-    devices:
-      - /dev/dri:/dev/dri
-      - /dev/dxg:/dev/dxg
-    volumes:
-      - /dev/bus/usb:/dev/bus/usb
-      - /usr/lib/wsl:/usr/lib/wsl
+  # openvino-wsl:
+  #   devices:
+  #     - /dev/dri:/dev/dri
+  #     - /dev/dxg:/dev/dxg
+  #   volumes:
+  #     - /dev/bus/usb:/dev/bus/usb
+  #     - /usr/lib/wsl:/usr/lib/wsl
